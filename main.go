@@ -21,7 +21,7 @@ const (
 )
 
 var (
-	revision    string
+	revision   string
 	appVersion = appName + " " + revision
 
 	listen string
@@ -29,12 +29,16 @@ var (
 )
 
 func init() {
-	flag.StringVar(&listen, "bind", ":9997", "Bind the HTTP server")
+	flag.StringVar(&listen, "listen", ":9997", "Listen metrics server address. [env: LISTEN]")
 	flag.BoolVar(&ver, "v", false, "Print version")
 	flag.Parse()
 	if ver {
 		fmt.Println(appVersion)
 		os.Exit(0)
+	}
+	envListen := os.Getenv("LISTEN")
+	if envListen != "" {
+		listen = envListen
 	}
 }
 
