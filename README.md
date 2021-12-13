@@ -2,6 +2,14 @@
 
 Linux listening ports Prometheus exporter
 
+## Usage
+
+```
+  -listen string
+    	Listen metrics server address. [env: LISTEN] (default ":9997")
+  -v	Print version
+```
+
 ## Metrics example
 
 ```
